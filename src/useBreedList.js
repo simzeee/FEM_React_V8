@@ -3,11 +3,8 @@ import { useState, useEffect } from 'react';
 const localCache = {};
 
 export default function useBreedList(animal) {
-  console.log('ANIMAL', animal);
-  console.log('CACHE', localCache)
   const [breedList, setBreedList] = useState([]);
   const [status, setStatus] = useState('');
-  console.log('BREEDLIST', breedList)
 
   useEffect(() => {
     if (!animal) {
