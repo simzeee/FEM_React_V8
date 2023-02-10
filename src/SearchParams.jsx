@@ -7,13 +7,13 @@ const SearchParams = () => {
   const [animal, setAnimal] = useState('');
   const [breed, setBreed] = useState('');
   const [pets, setPets] = useState([]);
-  const [breeds] = useBreedList(animal)
+  const [breeds] = useBreedList(animal);
 
   const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 
   useEffect(() => {
     requestPets();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function requestPets() {
@@ -27,10 +27,12 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-      <form onSubmit={e => {
-        e.preventDefault();
-        requestPets()
-      }}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -52,7 +54,7 @@ const SearchParams = () => {
               setBreed('');
             }}
           >
-            <option>Please choose an option</option>
+            <option></option>
             {ANIMALS.map((animal) => {
               return <option key={animal}>{animal}</option>;
             })}
@@ -67,7 +69,7 @@ const SearchParams = () => {
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
           >
-            <option>Please choose an option</option>
+            <option></option>
             {breeds.map((breed) => {
               return <option key={breed}>{breed}</option>;
             })}
@@ -75,7 +77,7 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
-      <Results pets={pets}/>
+      <Results pets={pets} />
     </div>
   );
 };
